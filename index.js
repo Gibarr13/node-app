@@ -2,6 +2,8 @@ import expres from "express"
 import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
+import route from "./routes/employeeRoute.js"
+
 
 const app = expres ()
 app.use(bodyParser.json())
@@ -18,3 +20,5 @@ mongoose.connect(MONGOURL).then( ()=> {
         console.log(`Server is running on port ${PORT}`)
     })
 }).catch( error => console.log(error))
+
+app.use("/api/employees", route)
